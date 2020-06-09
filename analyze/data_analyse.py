@@ -1,5 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
+
 df = pd.read_csv("datasets_26073_33239_weight-height.csv")
 # inches to cm
 height = df["Height"].tolist()
@@ -20,8 +22,20 @@ for w in weight:
 df["Weight"] = weight_kg
 
 # quick view
-# df.plot(kind='scatter',x='Weight',y='Height',color='red')
-# plt.show()
+df.plot(kind='scatter', x='Weight', y='Height', color='blue')
+plt.show()
 
+gender_colors = {
+    "Male": "r",
+    "Female": "g"
+}
 
+ax = plt.subplot()
+for gender in ["Male", "Female"]:
+    color = gender_colors[gender]
+    df[df.Gender == gender].plot(kind='scatter', x='Weight', y='Height', label=gender, ax=ax, color=color)
+handles, labels = ax.get_legend_handles_labels()
+_ = ax.legend(handles, labels, loc="upper left")
+
+plt.show()
 
