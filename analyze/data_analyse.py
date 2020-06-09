@@ -21,7 +21,7 @@ for w in weight:
 
 df["Weight"] = weight_kg
 
-# quick view
+# quick views
 df.plot(kind='scatter', x='Weight', y='Height', color='blue')
 plt.show()
 
