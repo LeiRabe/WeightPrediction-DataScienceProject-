@@ -44,6 +44,10 @@ print('R square Ridge = ', metrics.r2_score(Y_test, ridge_pred))
 print('Mean squared Error Ridge = ', metrics.mean_squared_error(Y_test, ridge_pred))
 print('Mean absolute Error Ridge = ', metrics.mean_absolute_error(Y_test, ridge_pred))
 
+# Coefficient and Intercept
+print("Coefficient= ", ridge.coef_)
+print("Intercept= ", ridge.intercept_)
+
 # Predict weight
 weight_pred_ridge = ridge.predict([[1, 170]]) # Gender,Height
 print('Predicted weight Linear = ', weight_pred_ridge)
