@@ -1,7 +1,6 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-from sklearn.neighbors import KNeighborsRegressor
 from sklearn import metrics
 
 
@@ -31,7 +30,7 @@ X = dataset.iloc[:, :-1].values
 Y = dataset.iloc[:, 2].values
 
 # Split data
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.5, random_state=0)
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=0)
 
 # --- Fit Regression Model ---
 lin_reg = LinearRegression()
@@ -49,6 +48,5 @@ print('Mean absolute Error Linear = ', metrics.mean_absolute_error(Y_test, lin_p
 # Predict weight
 weight_pred_lin = lin_reg.predict([[1, 170]]) # Gender,Height
 print('Predicted weight Linear = ', weight_pred_lin)
-
 
 
