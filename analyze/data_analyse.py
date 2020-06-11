@@ -1,6 +1,5 @@
-import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
+import pandas as pd
 
 df = pd.read_csv("../predictions/datasets_26073_33239_weight-height.csv")
 # inches to cm

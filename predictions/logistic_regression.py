@@ -1,8 +1,8 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
 from sklearn import metrics
 from sklearn import preprocessing
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
 
 # Load data
 dataset = pd.read_csv("datasets_26073_33239_weight-height.csv")
@@ -35,18 +35,17 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.5, random_
 # -- Logistic Regression --
 lab_enc = preprocessing.LabelEncoder()
 training_Y_encoded = lab_enc.fit_transform(Y_train)
-log_reg = LogisticRegression(solver='lbfgs', dual=False, max_iter=1000) #
+log_reg = LogisticRegression(solver='lbfgs', dual=False, max_iter=1000)
 log_reg.fit(X_train, training_Y_encoded)
 
 log_reg_pred = log_reg.predict(X_test)
 
-print("-------------- LOGISTIC REGRESSION METRICS: ")
-print('R square Neighbors = ', metrics.r2_score(Y_test, log_reg_pred))
-print('Mean squared Error Neighbors = ', metrics.mean_squared_error(Y_test, log_reg_pred))
-print('Mean absolute Error Neighbors = ', metrics.mean_absolute_error(Y_test, log_reg_pred))
+print("-------------- Logistic REGRESSION METRICS: ")
+print('R square Logistic = ', metrics.r2_score(Y_test, log_reg_pred))
+print('Mean squared Error Logistic = ', metrics.mean_squared_error(Y_test, log_reg_pred))
+print('Mean absolute Error Logistic = ', metrics.mean_absolute_error(Y_test, log_reg_pred))
+
+weight_pred_log = log_reg.predict([[1, 170]])  # Gender,Height
+print('Predicted weight Logistic = ', weight_pred_log)
 
 
-
-
-# weight_pred_log = log_reg.predict([[1, 170]])  # Gender,Height
-# print('Predicted weight Neighbors = ', weight_pred_log)

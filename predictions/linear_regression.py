@@ -1,8 +1,7 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
 from sklearn import metrics
-
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
 
 # Load data
 dataset = pd.read_csv("datasets_26073_33239_weight-height.csv")
@@ -46,7 +45,7 @@ print('Mean squared Error Linear = ', metrics.mean_squared_error(Y_test, lin_pre
 print('Mean absolute Error Linear = ', metrics.mean_absolute_error(Y_test, lin_pred))
 
 # Predict weight
-weight_pred_lin = lin_reg.predict([[1, 170]]) # Gender,Height
+weight_pred_lin = lin_reg.predict([[1, 170]])  # Gender,Height
 print('Predicted weight Linear = ', weight_pred_lin)
 
 
