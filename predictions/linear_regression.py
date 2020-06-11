@@ -13,21 +13,12 @@ dataset['Gender'].replace('Male', 1, inplace=True)
 X = dataset.iloc[:, :-1].values
 Y = dataset.iloc[:, 2].values
 
-xPlot = dataset.iloc[:, 1].values
-yPlot = dataset.iloc[:, 2].values
-
 # Split data
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=0)
 
 # --- Fit Regression Model ---
 lin_reg = LinearRegression()
-regModel = lin_reg.fit(X_train, Y_train)
-
-lin_regPlot = LinearRegression()
-lin_regPlot.fit(X, Y)
-plt.scatter(xPlot, yPlot, color='g')
-plt.plot(X, lin_regPlot.predict(X), color='k')
-plt.show()
+lin_reg.fit(X_train, Y_train)
 
 # Make Prediction using test data
 lin_pred = lin_reg.predict(X_test)

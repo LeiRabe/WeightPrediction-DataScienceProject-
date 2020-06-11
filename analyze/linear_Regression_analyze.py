@@ -16,6 +16,6 @@ regressor.fit(X_train, y_train)
 
 y_pred = regressor.predict(X_test)
 
-plt.scatter(X_test, y_test,  color='gray')
-plt.plot(X_test, y_pred, color='red', linewidth=2)
+plt.scatter(X_test, y_test,  color='g')
+plt.plot(X_test, y_pred, color='k', linewidth=2)
 plt.show()
