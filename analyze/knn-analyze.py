@@ -57,3 +57,33 @@ plt.plot(numpy.arange(0.1, 1, 0.1), listMTS)
 plt.xlabel('test size')
 plt.ylabel('score')
 plt.show()
+
+def getmetricsAll(test_size, n_neighbors):
+    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=test_size, random_state=0)
+    knn = KNeighborsRegressor(n_neighbors=n_neighbors)
+    knn.fit(X_train, Y_train)
+    y = knn.predict(X_test)
+    return metrics.r2_score(Y_test, y), metrics.mean_squared_error(Y_test, y), metrics.mean_absolute_error(Y_test, y)
+
+
+
+
+listMNBN = []
+for n_neighbors in range(1, 200, 1):
+    listMNBN.append(getmetricsAll(0.2, n_neighbors))
+
+plt.plot(range(1, 200, 1), listMNBN)
+plt.xlabel('nb neighbors')
+plt.ylabel('score')
+plt.show()
+
+
+listMTS = []
+for test_size in numpy.arange(0.1, 1, 0.1):
+    listMTS.append(getmetricsAll(test_size, 5))
+
+plt.plot(numpy.arange(0.1, 1, 0.1), listMTS)
+plt.xlabel('test size')
+plt.ylabel('score')
+plt.show()
+
