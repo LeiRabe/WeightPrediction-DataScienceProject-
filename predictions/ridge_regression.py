@@ -1,7 +1,7 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import Ridge
 from sklearn import metrics
+from sklearn.linear_model import Ridge
+from sklearn.model_selection import train_test_split
 
 # Load data
 dataset = pd.read_csv("datasets_26073_33239_weight-height.csv")
@@ -35,7 +35,7 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_
 ridge = Ridge(alpha=1)
 ridge.fit(X_train, Y_train)
 
-#Ridge prediction
+# Ridge prediction
 ridge_pred = ridge.predict(X_test)
 
 # RIDGE REGRESSION METRICS Accuracy
@@ -49,5 +49,5 @@ print("Coefficient= ", ridge.coef_)
 print("Intercept= ", ridge.intercept_)
 
 # Predict weight
-weight_pred_ridge = ridge.predict([[0, 170]]) # Gender,Height
+weight_pred_ridge = ridge.predict([[0, 170]])  # Gender,Height
 print('Predicted weight with ridge regression = ', weight_pred_ridge)
