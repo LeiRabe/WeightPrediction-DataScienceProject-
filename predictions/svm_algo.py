@@ -20,11 +20,6 @@ regr = svm.SVR()
 regr.fit(X_train, Y_train)
 regrpred = regr.predict(X_test)
 
-lin_regPlot = svm.SVR()
-lin_regPlot.fit(X, Y)
-plt.plot(X, lin_regPlot.predict(X), color='k')
-plt.show()
-
 # Model Accuracy
 print("-------------- SVM METRICS: ")
 print('R square Linear = ', metrics.r2_score(Y_test, regrpred))
