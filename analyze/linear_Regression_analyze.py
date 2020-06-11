@@ -18,4 +18,6 @@ y_pred = regressor.predict(X_test)
 
 plt.scatter(X_test, y_test,  color='gray')
 plt.plot(X_test, y_pred, color='red', linewidth=2)
+plt.xlabel('Weight')
+plt.ylabel('Height')
 plt.show()
