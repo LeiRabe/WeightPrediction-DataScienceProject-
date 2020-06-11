@@ -9,3 +9,9 @@ class MetricControlleur:
         ridge = Ridge(alpha=alphas)
         y = ridge.fit(X_train, Y_train).predict(X_test)
         return metrics.r2_score(Y_test, y)
+
+    def getmetrics(self, algo, test_size, X, Y):
+        X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=test_size, random_state=0)
+        regr = algo()
+        y = regr.fit(X_train, Y_train).predict(X_test)
+        return metrics.r2_score(Y_test, y)
