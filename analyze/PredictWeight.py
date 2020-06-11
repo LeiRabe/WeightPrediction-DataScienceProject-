@@ -49,4 +49,3 @@ print('Mean absolute Error Linear = ', metrics.mean_absolute_error(Y_test, lin_p
 weight_pred_lin = lin_reg.predict([[1, 170]]) # Gender,Height
 print('Predicted weight Linear = ', weight_pred_lin)
 
-
