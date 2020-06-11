@@ -1,26 +1,10 @@
-import pandas as pd
 from sklearn import metrics
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsRegressor
+from Controlleur import CsvControlleur as CsvControlleur
 
-# Load data
-dataset = pd.read_csv("datasets_26073_33239_weight-height.csv")
-
-# Convert data
-# inches to cm
-height = dataset["Height"].tolist()
-height_cm = []
-for h in height:
-    h *= 2.54
-    height_cm.append(h)
-dataset["Height"] = height_cm
-# lbs to kg
-weight = dataset["Weight"].tolist()
-weight_kg = []
-for w in weight:
-    w *= 0.453592
-    weight_kg.append(w)
-dataset["Weight"] = weight_kg
+csvCtrl = CsvControlleur.CsvControlleur()
+dataset = csvCtrl.readCsv()
 
 # Convert Gender to number
 dataset['Gender'].replace('Female', 0, inplace=True)
