@@ -3,7 +3,7 @@ import pandas as pd
 
 class CsvControlleur:
     def __init__(self):
-        self.csvPath = "../analyze/datasets_26073_33239_weight-height.csv"
+        self.csvPath = "../predictions/datasets_26073_33239_weight-height.csv"
 
     def readCsv(self):
         # Load data
