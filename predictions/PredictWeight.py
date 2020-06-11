@@ -1,7 +1,8 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import Ridge
+from sklearn.linear_model import LinearRegression
 from sklearn import metrics
+
 
 # Load data
 dataset = pd.read_csv("datasets_26073_33239_weight-height.csv")
@@ -31,23 +32,21 @@ Y = dataset.iloc[:, 2].values
 # Split data
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=0)
 
-# --- Ridge Regression ---
-ridge = Ridge(alpha=1)
-ridge.fit(X_train, Y_train)
+# --- Fit Regression Model ---
+lin_reg = LinearRegression()
+lin_reg.fit(X_train, Y_train)
 
-#Ridge prediction
-ridge_pred = ridge.predict(X_test)
+# Make Prediction using test data
+lin_pred = lin_reg.predict(X_test)
 
-# RIDGE REGRESSION METRICS Accuracy
-print("-------------- RIDGE REGRESSION METRICS: ")
-print('R square Ridge = ', metrics.r2_score(Y_test, ridge_pred))
-print('Mean squared Error Ridge = ', metrics.mean_squared_error(Y_test, ridge_pred))
-print('Mean absolute Error Ridge = ', metrics.mean_absolute_error(Y_test, ridge_pred))
-
-# Coefficient and Intercept
-print("Coefficient= ", ridge.coef_)
-print("Intercept= ", ridge.intercept_)
+# Model Accuracy
+print("-------------- LINEAR REGRESSION METRICS: ")
+print('R square Linear = ', metrics.r2_score(Y_test, lin_pred))
+print('Mean squared Error Linear = ', metrics.mean_squared_error(Y_test, lin_pred))
+print('Mean absolute Error Linear = ', metrics.mean_absolute_error(Y_test, lin_pred))
 
 # Predict weight
-weight_pred_ridge = ridge.predict([[1, 170]]) # Gender,Height
-print('Predicted weight Linear = ', weight_pred_ridge)
+weight_pred_lin = lin_reg.predict([[1, 170]]) # Gender,Height
+print('Predicted weight Linear = ', weight_pred_lin)
+
+

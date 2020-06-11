@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-df = pd.read_csv("datasets_26073_33239_weight-height.csv")
+df = pd.read_csv("../predictions/datasets_26073_33239_weight-height.csv")
 # inches to cm
 height = df["Height"].tolist()
 height_cm = []
@@ -21,10 +21,11 @@ for w in weight:
 
 df["Weight"] = weight_kg
 
-# quick views
+# quick views of the data set
 df.plot(kind='scatter', x='Weight', y='Height', color='blue')
 plt.show()
 
+# grouped by genre
 gender_colors = {
     "Male": "r",
     "Female": "g"
